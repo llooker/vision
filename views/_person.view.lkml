@@ -1,5 +1,5 @@
-view: person {
-  sql_table_name: `zekebishop-demo.ui.Person`
+view: _person {
+  sql_table_name: `zekebishop-demo.ui._person`
     ;;
   drill_fields: [id]
 
@@ -14,19 +14,9 @@ view: person {
     sql: ${TABLE}.address_city ;;
   }
 
-  dimension: address_county {
+  dimension: address_line_1 {
     type: string
-    sql: ${TABLE}.address_county ;;
-  }
-
-  dimension: address_line1 {
-    type: string
-    sql: ${TABLE}.address_line1 ;;
-  }
-
-  dimension: address_line2 {
-    type: string
-    sql: ${TABLE}.address_line2 ;;
+    sql: ${TABLE}.address_line_1 ;;
   }
 
   dimension: address_state {
@@ -39,18 +29,15 @@ view: person {
     sql: ${TABLE}.address_zip ;;
   }
 
-  dimension: age {
-    type: number
-    sql: ${TABLE}.age ;;
+  dimension: location {
+    type: location
+    sql_latitude: ${TABLE}.loc_lat ;;
+    sql_longitude:  ${TABLE}.loc_lon ;;
   }
 
-  dimension: application_id {
-    type: number
-    # hidden: yes
-    sql: ${TABLE}.application_id ;;
-  }
 
-  dimension_group: date_of_birth {
+
+  dimension_group: dob {
     type: time
     timeframes: [
       raw,
@@ -62,7 +49,12 @@ view: person {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.date_of_birth ;;
+    sql: ${TABLE}.dob ;;
+  }
+
+  dimension: email_address {
+    type: string
+    sql: ${TABLE}.email_address ;;
   }
 
   dimension: first_name {
@@ -95,6 +87,17 @@ view: person {
     sql: ${TABLE}.last_name ;;
   }
 
+  dimension: middle_name {
+    type: string
+    sql: ${TABLE}.middle_name ;;
+  }
+
+  dimension: phone_number {
+    type: number
+    sql: ${TABLE}.phone_number ;;
+    value_format: "(###) ###-####"
+  }
+
   dimension: ssn {
     type: string
     sql: ${TABLE}.ssn ;;
@@ -107,6 +110,14 @@ view: person {
 
   measure: count {
     type: count
-    drill_fields: [id, last_name, first_name, application.id, account_events.count]
+    drill_fields: [id, last_name, middle_name, first_name]
   }
+  measure: household_size {
+    type: count
+    filters: [
+      head_of_household: "no"
+    ]
+    required_fields: [household_id]
+  }
+
 }
