@@ -1,7 +1,15 @@
 view: _application {
   sql_table_name: `zekebishop-demo.ui._application`
     ;;
-  drill_fields: [id]
+  drill_fields: [
+      id,
+      household_id,
+      household_size,
+      previous_employer,
+      previous_income,
+      number_of_dependents,
+      ip_address_at_submit
+    ]
 
   dimension: id {
     primary_key: yes
@@ -105,6 +113,5 @@ view: _application {
 
   measure: count {
     type: count
-    drill_fields: [id]
   }
 }

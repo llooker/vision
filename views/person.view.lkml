@@ -7,6 +7,7 @@ view: person {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    value_format_name: id
   }
 
   dimension: address_city {
@@ -83,6 +84,7 @@ view: person {
   dimension: household_id {
     type: number
     sql: ${TABLE}.household_id ;;
+    value_format_name: id
   }
 
   dimension: language {

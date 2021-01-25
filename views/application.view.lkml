@@ -7,6 +7,7 @@ view: application {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    value_format_name: id
   }
 
   dimension_group: date {

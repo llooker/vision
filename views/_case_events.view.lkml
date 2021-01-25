@@ -1,12 +1,13 @@
 view: _case_events {
   sql_table_name: `zekebishop-demo.ui._case_events`
     ;;
-  drill_fields: [id]
+  drill_fields: [id, case_id,date_time, notes]
 
   dimension: id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    value_format_name: id
   }
 
   dimension: case_id {
@@ -35,6 +36,5 @@ view: _case_events {
 
   measure: count {
     type: count
-    drill_fields: [id]
   }
 }

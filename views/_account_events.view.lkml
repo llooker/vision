@@ -62,6 +62,5 @@ view: _account_events {
 
   measure: count {
     type: count
-    drill_fields: [id]
   }
 }

@@ -1,7 +1,7 @@
 view: _person {
   sql_table_name: `zekebishop-demo.ui._person`
     ;;
-  drill_fields: [id]
+  drill_fields: [id, household_id, dob_date, first_name, last_name, language, phone_number,email_address, ssn, address_line_1, address_city,address_state, address_zip, ]
 
   dimension: id {
     primary_key: yes
@@ -111,7 +111,6 @@ view: _person {
 
   measure: count {
     type: count
-    drill_fields: [id, last_name, middle_name, first_name]
   }
   measure: household_size {
     type: count

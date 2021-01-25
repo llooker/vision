@@ -1,6 +1,6 @@
 view: _case {
   sql_table_name: `zekebishop-demo.ui._case`;;
-  drill_fields: [id]
+  drill_fields: [id, application_id, status, reason_code, opened_time, closed_time]
 
   dimension: id {
     primary_key: yes
@@ -85,6 +85,7 @@ view: _case {
     timeframes: [
       raw,
       date,
+      time,
       week,
       month,
       quarter,
@@ -103,10 +104,23 @@ view: _case {
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
+    html:
+    {% if value == 'pending' %}
+    <div style="background: #FBB555; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% elsif value == 'Unsatisfied' %}
+        <div style="background: #FBB555; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% elsif value == 'closed_with_no_action' %}
+    <div style="background: #c9daf2; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% elsif value == 'closed_with_no_action' %}
+    <div style="background: #8BC34A; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% elsif value == 'closed_with_action' %}
+    <div style="background:  #8BC34A; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% endif %}
+
+    ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [id]
   }
 }

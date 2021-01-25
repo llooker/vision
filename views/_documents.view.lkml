@@ -1,7 +1,7 @@
 view: _documents {
   sql_table_name: `zekebishop-demo.ui._documents`
     ;;
-  drill_fields: [id]
+  drill_fields: [id, application_id, file_location, file_type, verification_status]
 
   dimension: id {
     primary_key: yes
@@ -32,6 +32,5 @@ view: _documents {
 
   measure: count {
     type: count
-    drill_fields: [id]
   }
 }

@@ -1,7 +1,7 @@
 view: _payments {
   sql_table_name: `zekebishop-demo.ui._payments`
     ;;
-  drill_fields: [id]
+  drill_fields: [id, head_of_household_id, status, type, total_distribution]
 
   dimension: id {
     primary_key: yes
@@ -47,7 +47,6 @@ view: _payments {
 
   measure: count {
     type: count
-    drill_fields: [id]
   }
 
   measure: total_distribution {
