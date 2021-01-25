@@ -31,6 +31,9 @@ explore: _application {
   join: _case {
     sql_on: ${_application.id} = ${_case.application_id} ;;
   }
+  join: _case_events {
+    sql_on: ${_case.id} = ${_case_events.case_id} ;;
+  }
   join: _payments {
     sql_on: ${_person.id} = ${_payments.head_of_household_id} ;;
   }
@@ -40,7 +43,22 @@ explore: _account_events {
   join: _person {
     sql_on: ${_account_events.person_id} = ${_person.id} ;;
   }
+}
 
 
 
+explore: application {
+  label: "Lawrence Version Application"
+  join: person {
+    sql_on: ${application.household_id} = ${person.household_id} ;;
+  }
+  join: documents {
+    sql_on: ${application.id} = ${documents.application_id} ;;
+  }
+  join: case {
+    sql_on: ${application.id} = ${case.application_id} ;;
+  }
+  join: payments {
+    sql_on: ${person.id} = ${payments.head_of_household_id} ;;
+  }
 }

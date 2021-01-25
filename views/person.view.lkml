@@ -1,5 +1,5 @@
 view: person {
-  sql_table_name: `zekebishop-demo.ui.Person`
+  sql_table_name: `zekebishop-demo.ui_v3.person`
     ;;
   drill_fields: [id]
 

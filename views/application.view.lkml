@@ -1,5 +1,5 @@
 view: application {
-  sql_table_name: `zekebishop-demo.ui.Application`
+  sql_table_name: `zekebishop-demo.ui_v3.application`
     ;;
   drill_fields: [id]
 

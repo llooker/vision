@@ -1,21 +1,20 @@
-view: case_events {
-  sql_table_name: `zekebishop-demo.ui_v3.case_events`
+view: _case_events {
+  sql_table_name: `zekebishop-demo.ui._case_events`
     ;;
   drill_fields: [id]
 
   dimension: id {
     primary_key: yes
-    type: string
+    type: number
     sql: ${TABLE}.id ;;
   }
 
   dimension: case_id {
-    type: string
-    # hidden: yes
+    type: number
     sql: ${TABLE}.case_id ;;
   }
 
-  dimension_group: datetime {
+  dimension_group: date {
     type: time
     timeframes: [
       raw,
@@ -26,7 +25,7 @@ view: case_events {
       quarter,
       year
     ]
-    sql: ${TABLE}.datetime ;;
+    sql: CAST(${TABLE}.date as timestamp) ;;
   }
 
   dimension: notes {
@@ -34,13 +33,8 @@ view: case_events {
     sql: ${TABLE}.notes ;;
   }
 
-  dimension: type {
-    type: string
-    sql: ${TABLE}.type ;;
-  }
-
   measure: count {
     type: count
-    drill_fields: [id, case.id]
+    drill_fields: [id]
   }
 }

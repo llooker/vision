@@ -1,5 +1,5 @@
 view: case {
-  sql_table_name: `zekebishop-demo.ui.Case`
+  sql_table_name: `zekebishop-demo.ui_v3.case`
     ;;
   drill_fields: [id]
 

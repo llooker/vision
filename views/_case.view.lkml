@@ -1,12 +1,64 @@
 view: _case {
-  sql_table_name: `zekebishop-demo.ui._case`
-    ;;
+  sql_table_name: `zekebishop-demo.ui._case`;;
   drill_fields: [id]
 
   dimension: id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    value_format_name: id
+    action: {
+      label: "Add Notes"
+      url: "https://us-central1-vision-302704.cloudfunctions.net/vision_add_case_notes"
+      # url: "https://visiontestfoo.free.beeceptor.com"
+      form_param: {
+        name: "case_notes"
+        label: "Case Notes"
+        type: textarea
+      }
+      param: {
+        name: "case_id"
+        value: "{{ value }}"
+      }
+      param: {
+        name: "security_key"
+        value: "s9cz6i9j6q4sj9nwj4"
+      }
+      user_attribute_param: {
+        user_attribute: email
+        name: "email"
+      }
+    }
+    action: {
+      label: "Change Status"
+      url: "https://us-central1-vision-302704.cloudfunctions.net/vision_change_case_status"
+      # url: "https://visiontestfoo.free.beeceptor.com"
+      form_param: {
+        name: "case_status"
+        label: "Change Case Status"
+        type: select
+        option: {
+          name: "closed"
+          label: "Closed"
+        }
+        option: {
+          name: "pending"
+          label: "Open"
+        }
+      }
+      param: {
+        name: "case_id"
+        value: "{{ value }}"
+      }
+      param: {
+        name: "security_key"
+        value: "s9cz6i9j6q4sj9nwj4"
+      }
+      user_attribute_param: {
+        user_attribute: email
+        name: "email"
+      }
+    }
   }
 
   dimension: application_id {

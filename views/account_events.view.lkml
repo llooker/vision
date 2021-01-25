@@ -1,5 +1,5 @@
 view: account_events {
-  sql_table_name: `zekebishop-demo.ui.Account_Events`
+  sql_table_name: `zekebishop-demo.ui_v3.account_events`
     ;;
   drill_fields: [id]
 

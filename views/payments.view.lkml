@@ -1,5 +1,5 @@
 view: payments {
-  sql_table_name: `zekebishop-demo.ui.Payments`
+  sql_table_name: `zekebishop-demo.ui_v3.payments`
     ;;
   drill_fields: [id]
 
