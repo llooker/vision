@@ -185,6 +185,12 @@ view: case {
     required_fields: [case_id]
   }
 
+  measure: median_time_open {
+    type: median
+    sql: ${time_open} ;;
+    html: {{rendered_value}} Days ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
