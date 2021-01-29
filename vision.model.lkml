@@ -1,7 +1,7 @@
 connection: "public-sector"
 include: "/*/*.view.lkml"
 
-persist_for: "0 seconds"
+persist_for: "1 minute"
 
 
 explore: application {
