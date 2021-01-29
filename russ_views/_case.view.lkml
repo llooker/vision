@@ -105,16 +105,18 @@ view: _case {
     type: string
     sql: ${TABLE}.status ;;
     html:
-    {% if value == 'pending' %}
-    <div style="background: #FBB555; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
-    {% elsif value == 'Unsatisfied' %}
-        <div style="background: #FBB555; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
-    {% elsif value == 'closed_with_no_action' %}
-    <div style="background: #c9daf2; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
-    {% elsif value == 'closed_with_no_action' %}
-    <div style="background: #8BC34A; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
-    {% elsif value == 'closed_with_action' %}
-    <div style="background:  #8BC34A; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% if value <= 1 %}
+    <div style="background: #00FF00; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% elsif value <= 10 %}
+        <div style="background: #33ff00; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% elsif value <= 25 %}
+    <div style="background: #99ff00; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% elsif value <= 50 %}
+    <div style="background: #FFCC00; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% elsif value <= 75 %}
+    <div style="background:  #FF3300; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
+    {% else %}
+    <div style="background:  #FF0000; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;">{{ rendered_value }}</div>
     {% endif %}
 
     ;;

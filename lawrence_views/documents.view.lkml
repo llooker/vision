@@ -1,6 +1,5 @@
 view: documents {
-  sql_table_name: `zekebishop-demo.ui_v3.documents`
-    ;;
+  sql_table_name: `zekebishop-demo.ui_v3.documents`;;
   drill_fields: [id]
 
   dimension: id {
