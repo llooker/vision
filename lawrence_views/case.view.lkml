@@ -86,13 +86,29 @@ view: case {
   }
 
   dimension: flag_reason_code {
+    label: "AI Flag"
     type: string
     sql: ${TABLE}.flag_reason_code ;;
   }
 
   dimension: human_reason_code {
+    label: "User Flag"
     type: string
-    sql: ${TABLE}.human_reason_code ;;
+    sql:  ${TABLE}.human_reason_code ;;
+  }
+
+  dimension: created_by {
+    sql: ${TABLE}.opened_by ;;
+  }
+
+  dimension: flag {
+    sql:
+      CASE
+        WHEN ${case.flag_reason_code} IS NULL THEN ${case.human_reason_code}
+        ELSE ${case.flag_reason_code}
+      END
+    ;;
+    label: "All Flags"
   }
 
   dimension: status {

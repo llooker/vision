@@ -1,5 +1,12 @@
 view: payments {
   sql_table_name: `zekebishop-demo.ui_v3.payments`;;
+  drill_fields: [
+     person.person_id
+    ,person.name
+    ,application.application_id
+    ,date_date
+    ,distirbution_amount
+  ]
 
   dimension: payment_id {
     type: number
@@ -34,7 +41,7 @@ view: payments {
   measure: distirbution_amount {
     type: sum
     sql: ${amount} ;;
-    value_format_name: usd
+    value_format_name: big_money
   }
 
   measure: median_distirbution_amount {
