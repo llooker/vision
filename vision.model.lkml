@@ -3,32 +3,8 @@ include: "/*/*.view.lkml"
 
 persist_for: "0 seconds"
 
-explore: _application {
-  join: _person {
-    sql_on: ${_application.household_id} = ${_person.household_id} ;;
-  }
-  join: _documents {
-    sql_on: ${_application.id} = ${_documents.application_id} ;;
-  }
-  join: _case {
-    sql_on: ${_application.id} = ${_case.application_id} ;;
-  }
-  join: _case_events {
-    sql_on: ${_case.id} = ${_case_events.case_id} ;;
-  }
-  join: _payments {
-    sql_on: ${_person.id} = ${_payments.head_of_household_id} ;;
-  }
-}
-
-explore: _account_events {
-  join: _person {
-    sql_on: ${_account_events.person_id} = ${_person.id} ;;
-  }
-}
 
 explore: application {
-  label: "Lawrence Version Application"
   join: person {
     sql_on: ${application.person_id} = ${person.person_id} ;;
   }
@@ -72,7 +48,7 @@ explore: feat_fuzzy_data {
 }
 
 explore: account_events {
-  label: "Lawrence Version Application Events"
+  label: "Application Events"
   join: person {
     sql_on: ${account_events.person_id} = ${person.person_id} ;;
   }
