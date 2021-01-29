@@ -34,3 +34,34 @@ view: zip_to_lat_lon {
     drill_fields: []
   }
 }
+
+view: all_locations {
+  derived_table: {
+    sql: WITH pzip as (
+        SELECT person_id,home_zip as zip FROM `zekebishop-demo.ui_v3.person`
+        UNION ALL
+        SELECT person_id,mail_zip FROM `zekebishop-demo.ui_v3.person`
+      )
+      SELECT
+         pzip.*
+        ,zll.Latitude
+        ,zll.Longitude
+      FROM pzip
+        LEFT JOIN `zekebishop-demo.ui_v3.zip_to_lat_lon` as zll ON (pzip.zip = LPAD(cast(zll.Zip as string),5,'0'))
+       ;;
+  }
+
+  dimension: person_id {
+    hidden: yes
+    type: number
+    sql: ${TABLE}.person_id ;;
+  }
+
+  dimension: location {
+    type: location
+    sql_latitude: ${TABLE}.latitude ;;
+    sql_longitude: ${TABLE}.longitude ;;
+  }
+
+
+}

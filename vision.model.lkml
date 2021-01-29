@@ -33,6 +33,9 @@ explore: application {
     view_label: "Person"
     sql_on: ${person.mail_zip} = ${mail_loc.zip} ;;
   }
+  join: all_locations {
+    sql_on: ${person.person_id} = ${all_locations.person_id} ;;
+  }
   join: feat_fuzzy_data {
     view_label: "Match Groups"
     sql_on: ${person.person_id} = ${feat_fuzzy_data.person_id} ;;
