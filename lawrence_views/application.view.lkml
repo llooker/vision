@@ -75,6 +75,7 @@ view: application {
   dimension: previous_income {
     type: number
     sql: ${TABLE}.previous_income ;;
+    value_format_name: usd_0
   }
 
   dimension: language {
