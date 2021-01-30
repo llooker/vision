@@ -74,6 +74,7 @@ view: application {
 
   dimension: previous_income {
     type: number
+    hidden: yes
     sql: ${TABLE}.previous_income ;;
     value_format_name: usd_0
   }
@@ -91,6 +92,18 @@ view: application {
   measure: count {
     type: count
     drill_fields: [detail*]
+  }
+
+  measure: previous_annual_income {
+    type: sum
+    sql: ${previous_income} ;;
+    value_format_name: usd_0
+  }
+
+  measure: payments_to_previous_income_ratio {
+    type: number
+    sql: ${payments.average_distirbution_amount} / (${previous_annual_income}/12) ;;
+    value_format_name: percent_1
   }
 
   set: detail {

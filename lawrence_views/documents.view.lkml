@@ -18,6 +18,10 @@ view: documents {
   dimension: file_location {
     type: string
     sql: ${TABLE}.file_location ;;
+    link: {
+      url: "{{ value }}"
+      label: "See Document"
+    }
   }
 
   dimension: file_type {
