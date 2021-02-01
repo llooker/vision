@@ -59,6 +59,10 @@ view: case {
         name: "email"
       }
     }
+    link: {
+      label: "View Application"
+      url: "/dashboards/22?Application+ID={{ application_id._value }}"
+    }
   }
 
   dimension: application_id {
