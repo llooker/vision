@@ -61,7 +61,7 @@ view: case {
     }
     link: {
       label: "View Application"
-      url: "@{host}/embed/dashboards-next/22?Application+ID={{ application_id._value }}&embed_domain=https://govportal.io&sdk=2"
+      url: "@{host}/embed/dashboards-next/22?Application+ID={{ application_id._value }}$theme=vision_theme&embed_domain=https://govportal.io&sdk=2"
     }
   }
 
