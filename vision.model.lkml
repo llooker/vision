@@ -62,6 +62,9 @@ explore: account_events {
     sql_on: ${application.application_id} = ${case.application_id} ;;
     relationship: one_to_many
   }
+  join: payments {
+    sql_on: ${person.person_id} = ${payments.person_id} ;;
+  }
 }
 
 named_value_format: big_money {
