@@ -50,6 +50,10 @@ explore: feat_fuzzy_data {
   }
 }
 
+explore: match_groups {
+  label: "AI Match Groups"
+}
+
 explore: account_events {
   label: "Application Events"
   join: person {
