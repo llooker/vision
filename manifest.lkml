@@ -16,3 +16,7 @@ constant: fips_html {
     <div style=\"background:  #FF3333; border-radius: 2px; color: #000; display: inline-block; font-size: 11px; font-weight: bold; line-height: 1; padding: 3px 4px; width: 100%; text-align: center;\">{{ rendered_value }}</div>
     {% endif %}"
 }
+
+constant: host {
+  value: "https://lookerdev.govportal.io"
+}

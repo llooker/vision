@@ -61,7 +61,7 @@ view: case {
     }
     link: {
       label: "View Application"
-      url: "/dashboards/22?Application+ID={{ application_id._value }}"
+      url: "@{host}/dashboards/22?Application+ID={{ application_id._value }}"
     }
   }
 
