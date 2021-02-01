@@ -18,15 +18,15 @@ view: documents {
   dimension: file_location {
     type: string
     sql: ${TABLE}.file_location ;;
-    link: {
-      url: "{{ value }}"
-      label: "See Document"
-    }
   }
 
   dimension: file_type {
     type: string
     sql: ${TABLE}.file_type ;;
+    link: {
+      url: "{{ file_location._value }}"
+      label: "View {{ value }}"
+    }
   }
 
   dimension: verification_status {
