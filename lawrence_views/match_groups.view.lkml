@@ -6,9 +6,13 @@ view: match_groups {
       FROM `zekebishop-demo.ui_v3.feat_fuzzy_data` f
         LEFT JOIN `zekebishop-demo.ui_v3.application` a ON (f.person_id = a.person_id)
       WHERE match_group in (
-          select match_group from `zekebishop-demo.ui_v3.feat_fuzzy_data`  where person_id = 693
+          select match_group from `zekebishop-demo.ui_v3.feat_fuzzy_data`  where person_id = {% parameter target %}
       )
        ;;
+    }
+
+    parameter: target {
+      type: unquoted
     }
 
     measure: count {
