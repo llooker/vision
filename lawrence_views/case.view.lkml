@@ -65,6 +65,71 @@ view: case {
     }
   }
 
+  dimension: is_open {
+    type: yesno
+    sql: ${closed_date} IS NULL ;;
+
+  }
+
+  dimension: action_case {
+    sql: ${case_id} ;;
+    html:
+      <button type="button" class="btn btn-danger"><a href="#drillmenu" target="_self">Action Case</a></button>
+    ;;
+    action: {
+      label: "Change Status"
+      url: "https://us-central1-vision-302704.cloudfunctions.net/vision_change_case_status"
+      # url: "https://visiontestfoo.free.beeceptor.com"
+      form_param: {
+        name: "case_status"
+        label: "Change Case Status"
+        type: select
+        option: {
+          name: "closed"
+          label: "Closed"
+        }
+        option: {
+          name: "pending"
+          label: "Open"
+        }
+      }
+      param: {
+        name: "case_id"
+        value: "{{ case_id._value }}"
+      }
+      param: {
+        name: "security_key"
+        value: "s9cz6i9j6q4sj9nwj4"
+      }
+      user_attribute_param: {
+        user_attribute: email
+        name: "email"
+      }
+    }
+    action: {
+      label: "Add Notes"
+      url: "https://us-central1-vision-302704.cloudfunctions.net/vision_add_case_notes"
+      # url: "https://visiontestfoo.free.beeceptor.com"
+      form_param: {
+        name: "case_notes"
+        label: "Case Notes"
+        type: textarea
+      }
+      param: {
+        name: "case_id"
+        value: "{{ value }}"
+      }
+      param: {
+        name: "security_key"
+        value: "s9cz6i9j6q4sj9nwj4"
+      }
+      user_attribute_param: {
+        user_attribute: email
+        name: "email"
+      }
+    }
+  }
+
   dimension: application_id {
     type: number
     sql: ${TABLE}.application_id ;;

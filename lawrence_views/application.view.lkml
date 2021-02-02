@@ -56,6 +56,62 @@ view: application {
     }
   }
 
+  dimension: create_case {
+    sql: ${application_id} ;;
+    html:
+      <button type="button" class="btn btn-danger" style="color:#fff;"><a href="#drillmenu" target="_self">Create Case</a></button>
+    ;;
+    action: {
+      label: "Create Case"
+      url: "https://us-central1-vision-302704.cloudfunctions.net/create_case"
+      # url: "https://kewl1.free.beeceptor.com"
+      form_param: {
+        name: "reason_code"
+        label: "Reason Code"
+        type: select
+        default: "human_suspicious_email"
+        option: {
+          name: "human_suspicious_email"
+          label: "Suspicious Email"
+        }
+        option: {
+          name: "human_document_mismatch"
+          label: "Document Mismatch"
+        }
+        option: {
+          name: "human_login_behavior"
+          label: "Login Behavior"
+        }
+        option: {
+          name: "duplicate_enrollments"
+          label: "Duplicate Enrollments"
+        }
+        option: {
+          name: "human_multiple_head_of_household"
+          label: "Multiple Head of Household one Address"
+        }
+        option: {
+          name: "human_eligibility_fact_change"
+          label: "Facts Changing in Multiple Applications"
+        }
+      }
+      param: {
+        name: "application_id"
+        value: "{{ value }}"
+      }
+      param: {
+        name: "security_key"
+        value: "s9cz6i9j6q4sj9nwj4"
+      }
+      user_attribute_param: {
+        user_attribute: email
+        name: "email"
+      }
+    }
+  }
+
+
+
   dimension: person_id {
     type: number
     sql: ${TABLE}.person_id ;;
