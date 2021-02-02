@@ -91,7 +91,7 @@ view: person {
   }
 
   dimension: _search {
-    hidden: yes
+    # hidden: yes
     sql: CONCAT(
                 ${name},
                 ' Email: ',${email_address},
