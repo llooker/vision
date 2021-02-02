@@ -90,6 +90,16 @@ view: person {
     sql: ${TABLE}.language ;;
   }
 
+  dimension: _search {
+    hidden: yes
+    sql: CONCAT(
+                ${name},
+                ' Email: ',${email_address},
+                ' Phone: ',${phone_number},
+                ' SSN: ',${ssn},
+                ' Address:',${home_address},' ',${home_city}) ;;
+  }
+
   dimension: ssn {
     group_label: "PII"
   }

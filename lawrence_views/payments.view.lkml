@@ -38,7 +38,7 @@ view: payments {
     value_format_name: big_money
   }
 
-  measure: distirbution_amount {
+  measure: distribution_amount {
     type: sum
     sql: ${amount} ;;
     value_format_name: big_money
