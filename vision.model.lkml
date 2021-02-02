@@ -40,6 +40,15 @@ explore: application {
     view_label: "Match Groups"
     sql_on: ${person.person_id} = ${feat_fuzzy_data.person_id} ;;
   }
+  aggregate_table: search {
+    query: {
+      dimensions: [person.person_id, person._search]
+      limit: 10000
+    }
+    materialization: {
+      sql_trigger_value: select current_date() ;;
+    }
+  }
 }
 
 explore: feat_fuzzy_data {
