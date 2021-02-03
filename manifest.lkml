@@ -20,3 +20,19 @@ constant: fips_html {
 constant: host {
   value: "https://lookerdev.govportal.io"
 }
+
+
+application: ef_vision {
+  url: "http://localhost:8080/bundle.js"
+  entitlements: {
+    local_storage: yes
+    navigation: yes
+    new_window: yes
+    use_embeds: yes
+    core_api_methods: [
+      "run_inline_query",
+      "lookml_model_explore",
+      "create_query"
+    ]
+  }
+}
