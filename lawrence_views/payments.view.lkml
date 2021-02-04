@@ -32,10 +32,16 @@ view: payments {
   }
 
   dimension: amount {
-    hidden: yes
     type: number
     sql: ${TABLE}.amount ;;
     value_format_name: big_money
+  }
+
+  dimension: amount_tier {
+    type: tier
+    sql: ${TABLE}.amount ;;
+    tiers: [0, 200, 400, 600, 800, 1000]
+    style: relational
   }
 
   measure: distribution_amount {

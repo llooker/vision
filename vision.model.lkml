@@ -49,6 +49,11 @@ explore: application {
       sql_trigger_value: select current_date() ;;
     }
   }
+  query: distribution_of_amounts {
+    dimensions: [payments.amount_tier]
+    measures: [payments.count]
+    description: "Explore these prebuild queries"
+  }
 }
 
 explore: feat_fuzzy_data {

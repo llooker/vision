@@ -96,8 +96,7 @@ view: person {
                 ${name},
                 ' Email: ',${email_address},
                 ' Phone: ',${phone_number},
-                ' SSN: ',${ssn},
-                ' Address:',${home_address},' ',${home_city}) ;;
+                ' SSN: ',${ssn} ;;
   }
 
   dimension: ssn {
