@@ -56,11 +56,13 @@ view: application {
     }
     link: {
       label: "View Application"
-      url: "/dashboards-next/22?Application+ID={{ value }}"
+      # url: "/dashboards-next/22?Application+ID={{ value }}"
+      url: "{{ value }}"
     }
     link: {
       label: "View Beneficiary"
-      url: "/dashboards-next/21?Person+ID={{ person_id._value }}"
+      # url: "/dashboards-next/21?Person+ID={{ person_id._value }}"
+      url: "{{ person_id._value }}"
     }
   }
 
