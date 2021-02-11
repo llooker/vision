@@ -58,6 +58,10 @@ view: application {
       label: "View Application"
       url: "/dashboards-next/22?Application+ID={{ value }}"
     }
+    link: {
+      label: "View Beneficiary"
+      url: "/dashboards-next/21?Person+ID={{ person_id._value }}"
+    }
   }
 
   dimension: create_case {
