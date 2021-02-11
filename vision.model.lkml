@@ -1,6 +1,5 @@
 connection: "public-sector"
 include: "/*/*.view.lkml"
-include: "flags.dashboard"
 persist_for: "1 minute"
 
 
