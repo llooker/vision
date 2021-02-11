@@ -54,6 +54,10 @@ view: application {
         name: "email"
       }
     }
+    link: {
+      label: "View Application"
+      url: "/dashboards-next/22?Application+ID={{ value }}"
+    }
   }
 
   dimension: create_case {
