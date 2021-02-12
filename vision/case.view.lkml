@@ -9,9 +9,9 @@ view: case {
     primary_key: yes
     action: {
       label: "Add Notes"
-      # url: "https://us-central1-vision-302704.cloudfunctions.net/vision_add_case_notes"
+      url: "https://us-central1-vision-302704.cloudfunctions.net/vision_add_case_notes"
       # url: "https://visiontestfoo.free.beeceptor.com"
-      url: "https://jnjexample.free.beeceptor.com"
+      # url: "https://jnjexample.free.beeceptor.com"
       form_param: {
         name: "case_notes"
         label: "Case Notes"
@@ -37,9 +37,9 @@ view: case {
     }
     action: {
       label: "Change Status"
-      # url: "https://us-central1-vision-302704.cloudfunctions.net/vision_change_case_status"
-      url: "https://kewl1.proxy.beeceptor.com"
-      icon_url: "https://looker.com/favicon.ico"
+      url: "https://us-central1-vision-302704.cloudfunctions.net/vision_change_case_status"
+      # url: "https://kewl1.proxy.beeceptor.com"
+      # icon_url: "https://looker.com/favicon.ico"
       form_param: {
         name: "case_status"
         label: "Change Case Status"
