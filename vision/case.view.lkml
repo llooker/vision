@@ -81,7 +81,7 @@ view: case {
   dimension: action_case {
     sql: ${case_id} ;;
     html:
-      <button type="button" class="btn btn-danger"><a href="#drillmenu" target="_self">Action Case</a></button>
+      <button type="button" style="color:#fff; background-color:#6c8cdc;  margin:5px;" ><a href="#drillmenu" target="_self">Action Case</a></button>
     ;;
     action: {
       label: "Change Status"

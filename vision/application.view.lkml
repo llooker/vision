@@ -74,7 +74,6 @@ view: application {
     action: {
       label: "Create Case"
       url: "https://us-central1-vision-302704.cloudfunctions.net/create_case"
-      # url: "https://kewl1.free.beeceptor.com"
       form_param: {
         name: "reason_code"
         label: "Reason Code"
