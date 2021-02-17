@@ -28,6 +28,10 @@ view: match_groups {
     dimension: person_id {
       type: number
       sql: ${TABLE}.person_id ;;
+      link: {
+        label: "View Beneficiary"
+        url: "{{ value }}"
+      }
     }
 
     dimension: email {
@@ -38,6 +42,10 @@ view: match_groups {
     dimension: application_id {
       type: number
       sql: ${TABLE}.application_id ;;
+      link: {
+        label: "View Application"
+        url: "{{ value }}"
+      }
     }
 
     set: detail {
