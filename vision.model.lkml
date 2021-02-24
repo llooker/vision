@@ -53,6 +53,11 @@ explore: application {
     measures: [payments.count]
     description: "Explore these prebuild queries"
   }
+  query: distribution_of_amounts2 {
+    dimensions: [payments.amount_tier]
+    measures: [payments.count]
+    description: "Explore these prebuild queries"
+  }
 }
 
 explore: feat_fuzzy_data {
