@@ -51,12 +51,12 @@ explore: application {
   query: distribution_of_amounts {
     dimensions: [payments.amount_tier]
     measures: [payments.count]
-    description: "Explore these prebuild queries"
+    description: "See distribution of amounts"
   }
-  query: distribution_of_amounts2 {
-    dimensions: [payments.amount_tier]
-    measures: [payments.count]
-    description: "Explore these prebuild queries"
+  query: prior_year_outstanding_cases_by_state{
+    dimensions: [person.home_state, person.count]
+    filters: [case.is_open: "true", case.opened_date: "before 2021-01-01"]
+    description: "See outstanding cases from last year that are still open"
   }
 }
 
