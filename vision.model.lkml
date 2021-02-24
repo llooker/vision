@@ -62,7 +62,7 @@ explore: application {
     dimensions: [person.name, person.ssn, person.phone_number, person.email_address, person.mail_zip, person.home_zip]
     measures: [application.count]
     filters: [person.matching_zip: "no"]
-    description: "See outstanding cases from last year that are still open"
+    description: "See zip persons with non matching home and mailing zip codes"
   }
 }
 
