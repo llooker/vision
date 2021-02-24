@@ -55,7 +55,7 @@ explore: application {
   }
   query: prior_year_outstanding_cases_by_state{
     dimensions: [person.home_state, person.count]
-    filters: [case.is_open: "true", case.opened_date: "before 2021-01-01"]
+    filters: [case.is_open: "Yes", case.opened_date: "before 2021-01-01"]
     description: "See outstanding cases from last year that are still open"
   }
 }
