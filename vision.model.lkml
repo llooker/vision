@@ -58,6 +58,12 @@ explore: application {
     filters: [case.is_open: "Yes", case.opened_date: "before 2021-01-01"]
     description: "See outstanding cases from last year that are still open"
   }
+  query: out_of_state{
+    dimensions: [person.name, person.ssn, person.phone_number, person.email_address, person.mail_zip, person.home_zip]
+    measures: [application.count]
+    filters: [person.matching_zip: "no"]
+    description: "See outstanding cases from last year that are still open"
+  }
 }
 
 explore: feat_fuzzy_data {
