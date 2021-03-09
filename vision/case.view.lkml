@@ -9,7 +9,8 @@ view: case {
     primary_key: yes
     action: {
       label: "Add Notes"
-      url: "https://us-central1-vision-302704.cloudfunctions.net/vision_add_case_notes"
+      # url: "https://us-central1-vision-302704.cloudfunctions.net/vision_add_case_notes"
+      url: "https://us-central1-pbl-demo-2020-281322.cloudfunctions.net/add_case_notes"
       # url: "https://visiontestfoo.free.beeceptor.com"
       # url: "https://jnjexample.free.beeceptor.com"
       form_param: {
@@ -115,7 +116,8 @@ view: case {
     }
     action: {
       label: "Add Notes"
-      url: "https://us-central1-vision-302704.cloudfunctions.net/vision_add_case_notes"
+      # url: "https://us-central1-vision-302704.cloudfunctions.net/vision_add_case_notes"
+    url: "https://us-central1-pbl-demo-2020-281322.cloudfunctions.net/add_case_notes"
       # url: "https://visiontestfoo.free.beeceptor.com"
       form_param: {
         name: "case_notes"
