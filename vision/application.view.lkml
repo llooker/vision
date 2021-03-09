@@ -9,7 +9,7 @@ view: application {
     value_format_name: id
     action: {
       label: "Create Case"
-      url: "https://us-central1-vision-302704.cloudfunctions.net/create_case"
+      url: "https://us-central1-pbl-demo-2020-281322.cloudfunctions.net/create_case"
       # url: "https://kewl1.proxy.beeceptor.com"
       form_param: {
         name: "reason_code"
