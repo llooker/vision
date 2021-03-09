@@ -15,7 +15,7 @@ view: application {
         name: "reason_code"
         label: "Reason Code"
         type: select
-        default: "human_suspicious_email"
+        default: "Select an option"
         option: {
           name: "human_suspicious_email"
           label: "Suspicious Email"
