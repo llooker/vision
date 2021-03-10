@@ -38,7 +38,8 @@ view: case {
     }
     action: {
       label: "Change Status"
-      url: "https://us-central1-vision-302704.cloudfunctions.net/vision_change_case_status"
+      # url: "https://us-central1-vision-302704.cloudfunctions.net/vision_change_case_status"
+      url: "https://us-central1-pbl-demo-2020-281322.cloudfunctions.net/change_case_status"
       # url: "https://kewl1.proxy.beeceptor.com"
       # icon_url: "https://looker.com/favicon.ico"
       form_param: {
@@ -86,7 +87,8 @@ view: case {
     ;;
     action: {
       label: "Change Status"
-      url: "https://us-central1-vision-302704.cloudfunctions.net/vision_change_case_status"
+      # url: "https://us-central1-vision-302704.cloudfunctions.net/vision_change_case_status"
+      url: "https://us-central1-pbl-demo-2020-281322.cloudfunctions.net/change_case_status"
       # url: "https://visiontestfoo.free.beeceptor.com"
       form_param: {
         name: "case_status"
