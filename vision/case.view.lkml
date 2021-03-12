@@ -36,7 +36,8 @@ view: case {
     }
     action: {
       label: "Change Status"
-      url: "https://us-central1-pbl-demo-2020-281322.cloudfunctions.net/change_case_status"
+      # url: "https://us-central1-pbl-demo-2020-281322.cloudfunctions.net/change_case_status"
+      url: "https://ewarreng.free.beeceptor.com"
       form_param: {
         name: "case_status"
         label: "Change Case Status"
@@ -82,7 +83,8 @@ view: case {
     ;;
     action: {
       label: "Change Status"
-      url: "https://us-central1-pbl-demo-2020-281322.cloudfunctions.net/change_case_status"
+      # url: "https://us-central1-pbl-demo-2020-281322.cloudfunctions.net/change_case_status"
+      url: "https://ewarreng.free.beeceptor.com"
       form_param: {
         name: "case_status"
         label: "Change Case Status"
