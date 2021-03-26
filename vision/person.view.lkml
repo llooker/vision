@@ -84,6 +84,12 @@ view: person {
     group_label: "Mailing Address"
   }
 
+  dimension: matching_zip {
+    type: yesno
+    sql: ${mail_zip} = ${home_zip}  ;;
+    group_label: "Mailing Address"
+  }
+
   dimension: language {
     group_label: "Demographics"
     type: string

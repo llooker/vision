@@ -9,13 +9,13 @@ view: application {
     value_format_name: id
     action: {
       label: "Create Case"
-      url: "https://us-central1-vision-302704.cloudfunctions.net/create_case"
-      # url: "https://kewl1.proxy.beeceptor.com"
+      url: "https://us-central1-pbl-demo-2020-281322.cloudfunctions.net/create_case"
+      # url: "https://ewarreng.free.beeceptor.com"
       form_param: {
         name: "reason_code"
         label: "Reason Code"
         type: select
-        default: "human_suspicious_email"
+        default: "Select an option"
         option: {
           name: "human_suspicious_email"
           label: "Suspicious Email"
