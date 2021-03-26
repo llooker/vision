@@ -55,7 +55,7 @@ view: person {
   }
 
   dimension: home_zip {
-    type: string
+    type: zipcode
     sql: ${TABLE}.home_zip ;;
     group_label: "Home Address"
   }

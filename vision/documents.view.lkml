@@ -17,7 +17,8 @@ view: documents {
 
   dimension: file_location {
     type: string
-    sql: ${TABLE}.file_location ;;
+    # sql: ${TABLE}.file_location ;;
+    sql: "https://storage.googleapis.com/looker-dat-vision/dl_1_Shaun_Mcdonald.jpg" ;;
   }
 
   dimension: file_type {
