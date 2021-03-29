@@ -17,12 +17,13 @@ view: documents {
 
   dimension: file_location {
     type: string
-    sql:
-      CASE
-        WHEN ${file_type} = "drivers_license" THEN "https://storage.googleapis.com/looker-dat-vision/dl_1_Shaun_Mcdonald.jpg"
-        ELSE ${TABLE}.file_location
-      END
-    ;;
+    # sql:
+    #   CASE
+    #     WHEN ${file_type} = "drivers_license" THEN "https://storage.googleapis.com/looker-dat-vision/dl_1_Shaun_Mcdonald.jpg"
+    #     ELSE ${TABLE}.file_location
+    #   END
+    # ;;
+    sql: ${TABLE}.file_location ;;
   }
 
   dimension: file_type {
