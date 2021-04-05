@@ -1,5 +1,5 @@
 view: case {
-  sql_table_name: `zekebishop-demo.ui_v3.case`
+  sql_table_name: `vision.case`
     ;;
 
   dimension: case_id {

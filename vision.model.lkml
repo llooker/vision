@@ -1,4 +1,5 @@
-connection: "public-sector"
+# connection: "public-sector"
+connection: "public-sector-pbl-demo"
 include: "/*/*.view.lkml"
 persist_for: "0 minute"
 
@@ -8,7 +9,7 @@ explore: application {
     sql_on: ${application.person_id} = ${person.person_id} ;;
   }
   join: documents {
-    sql_on: ${application.application_id} = ${documents.application_id} ;;
+    sql_on: ${application.person_id} = ${documents.person_id} ;;
   }
   join: case {
     sql_on: ${application.application_id} = ${case.application_id} ;;

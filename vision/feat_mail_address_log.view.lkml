@@ -1,5 +1,5 @@
 view: feat_mail_address_log {
-  sql_table_name: `zekebishop-demo.ui_v3.feat_mail_address_log`;;
+  sql_table_name: `vision.feat_mail_address_log`;;
 
   dimension: address {
     type: string

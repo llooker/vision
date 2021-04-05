@@ -1,5 +1,5 @@
 view: payments {
-  sql_table_name: `zekebishop-demo.ui_v3.payments`;;
+  sql_table_name: vision.payments;;
   drill_fields: [
      person.person_id
     ,person.name

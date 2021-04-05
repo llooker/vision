@@ -1,5 +1,5 @@
 view: person {
-  sql_table_name: `zekebishop-demo.ui_v3.person`;;
+  sql_table_name: person;;
 
   dimension: person_id {
     type: number

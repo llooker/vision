@@ -1,5 +1,5 @@
 view: zip_to_lat_lon {
-  sql_table_name: `zekebishop-demo.ui_v3.zip_to_lat_lon`
+  sql_table_name: `zip_to_lat_lon`
     ;;
 
   dimension: latitude {
@@ -25,7 +25,8 @@ view: zip_to_lat_lon {
     hidden: yes
     primary_key: yes
     type: zipcode
-    sql: LPAD(cast(${TABLE}.Zip as string),5,'0') ;;
+    # sql: LPAD(cast(${TABLE}.Zip as string),5,'0') ;;
+    sql: ${TABLE}.Zip ;;
   }
 
   measure: count {
@@ -39,16 +40,17 @@ view: zip_to_lat_lon {
   view: all_locations {
     derived_table: {
       sql: WITH pzip as (
-        SELECT person_id,home_zip as zip FROM `zekebishop-demo.ui_v3.person`
+        SELECT person_id,home_zip as zip FROM `vision.person`
         UNION ALL
-        SELECT person_id,mail_zip FROM `zekebishop-demo.ui_v3.person`
+        SELECT person_id,mail_zip FROM `vision.person`
       )
       SELECT
          pzip.*
         ,zll.Latitude
         ,zll.Longitude
       FROM pzip
-        LEFT JOIN `zekebishop-demo.ui_v3.zip_to_lat_lon` as zll ON (pzip.zip = LPAD(cast(zll.Zip as string),5,'0'))
+        --LEFT JOIN `vision.zip_to_lat_lon` as zll ON (pzip.zip = LPAD(cast(zll.Zip as string),5,'0'))
+        LEFT JOIN `vision.zip_to_lat_lon` as zll ON pzip.zip = zll.Zip
        ;;
     }
 

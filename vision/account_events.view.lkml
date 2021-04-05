@@ -1,5 +1,5 @@
 view: account_events {
-  sql_table_name: `zekebishop-demo.ui_v3.account_events`
+  sql_table_name: `vision.account_events`
     ;;
   measure: count {
     type: count

@@ -1,5 +1,5 @@
 view: documents {
-  sql_table_name: `zekebishop-demo.ui_v3.documents`;;
+  sql_table_name: `vision.documents`;;
   drill_fields: [id]
 
   dimension: id {
@@ -9,10 +9,10 @@ view: documents {
     value_format_name: id
   }
 
-  dimension: application_id {
+  dimension: person_id {
     type: number
     # hidden: yes
-    sql: ${TABLE}.application_id ;;
+    sql: ${TABLE}.person_id ;;
   }
 
   dimension: file_location {
@@ -23,12 +23,12 @@ view: documents {
     #     ELSE ${TABLE}.file_location
     #   END
     # ;;
-    sql: ${TABLE}.file_location ;;
+    sql: ${TABLE}.location ;;
   }
 
   dimension: file_type {
     type: string
-    sql: ${TABLE}.file_type ;;
+    sql: ${TABLE}.type ;;
     link: {
       url: "{{ file_location._value }}"
       label: "View {{ value }}"
@@ -37,7 +37,7 @@ view: documents {
 
   dimension: verification_status {
     type: string
-    sql: ${TABLE}.verification_status ;;
+    sql: "Passed Application Check" ;;
   }
 
   measure: count {

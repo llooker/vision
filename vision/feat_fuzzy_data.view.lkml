@@ -1,5 +1,5 @@
 view: feat_fuzzy_data {
-  sql_table_name: `zekebishop-demo.ui_v3.feat_fuzzy_data`;;
+  sql_table_name: `vision.feat_fuzzy_data`;;
 
   dimension: email {
     type: string

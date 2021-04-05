@@ -1,5 +1,5 @@
 view: feat_domain_date {
-  sql_table_name: `zekebishop-demo.ui_v3.feat_domain_date`;;
+  sql_table_name: `vision.feat_domain_date`;;
 
   dimension: domain {
     type: string

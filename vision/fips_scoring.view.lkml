@@ -1,5 +1,5 @@
 view: fips_scoring {
-  sql_table_name: `zekebishop-demo.ui_v3.fips_scoring`;;
+  sql_table_name: `vision.fips_scoring`;;
 
   dimension: application_id {
     type: number

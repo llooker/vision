@@ -1,5 +1,5 @@
 view: feat_name_log {
-  sql_table_name: `zekebishop-demo.ui_v3.feat_name_log` ;;
+  sql_table_name: `vision.feat_name_log` ;;
 
   dimension: context {
     type: string
