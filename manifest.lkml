@@ -37,3 +37,10 @@ application: ef_vision {
     oauth2_urls: ["https://accounts.google.com/o/oauth2/v2/auth", "https://github.com/login/oauth/authorize", "https://dev-5eqts7im.auth0.com/authorize", "https://dev-5eqts7im.auth0.com/login/oauth/token", "https://github.com/login/oauth/access_token"]
   }
 }
+
+
+visualization: {
+  id: "kewl"
+  url: "https://localhost:4443/forcedirected.js"
+  label: "Kewl"
+}
