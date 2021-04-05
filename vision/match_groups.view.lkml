@@ -1,54 +1,54 @@
-view: match_groups {
-    derived_table: {
-      sql: SELECT
-        f.*,
-        a.application_id
-      FROM `zekebishop-demo.ui_v3.feat_fuzzy_data` f
-        LEFT JOIN `zekebishop-demo.ui_v3.application` a ON (f.person_id = a.person_id)
-      WHERE match_group in (
-          select match_group from `zekebishop-demo.ui_v3.feat_fuzzy_data`  where person_id = {% parameter target %}
-      )
-       ;;
-    }
+# view: match_groups {
+#     derived_table: {
+#       sql: SELECT
+#         f.*,
+#         a.application_id
+#       FROM `zekebishop-demo.ui_v3.feat_fuzzy_data` f
+#         LEFT JOIN `zekebishop-demo.ui_v3.application` a ON (f.person_id = a.person_id)
+#       WHERE match_group in (
+#           select match_group from `zekebishop-demo.ui_v3.feat_fuzzy_data`  where person_id = {% parameter target %}
+#       )
+#       ;;
+#     }
 
-    parameter: target {
-      type: unquoted
-    }
+#     parameter: target {
+#       type: unquoted
+#     }
 
-    measure: count {
-      type: count
-      drill_fields: [detail*]
-    }
+#     measure: count {
+#       type: count
+#       drill_fields: [detail*]
+#     }
 
-    dimension: match_group {
-      type: number
-      sql: ${TABLE}.match_group ;;
-    }
+#     dimension: match_group {
+#       type: number
+#       sql: ${TABLE}.match_group ;;
+#     }
 
-    dimension: person_id {
-      type: number
-      sql: ${TABLE}.person_id ;;
-      link: {
-        label: "View Beneficiary"
-        url: "{{ value }}"
-      }
-    }
+#     dimension: person_id {
+#       type: number
+#       sql: ${TABLE}.person_id ;;
+#       link: {
+#         label: "View Beneficiary"
+#         url: "{{ value }}"
+#       }
+#     }
 
-    dimension: email {
-      type: string
-      sql: ${TABLE}.email ;;
-    }
+#     dimension: email {
+#       type: string
+#       sql: ${TABLE}.email ;;
+#     }
 
-    dimension: application_id {
-      type: number
-      sql: ${TABLE}.application_id ;;
-      link: {
-        label: "View Application"
-        url: "{{ value }}"
-      }
-    }
+#     dimension: application_id {
+#       type: number
+#       sql: ${TABLE}.application_id ;;
+#       link: {
+#         label: "View Application"
+#         url: "{{ value }}"
+#       }
+#     }
 
-    set: detail {
-      fields: [match_group, person_id, email, application_id]
-    }
-  }
+#     set: detail {
+#       fields: [match_group, person_id, email, application_id]
+#     }
+#   }

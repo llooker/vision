@@ -36,10 +36,10 @@ explore: application {
   join: all_locations {
     sql_on: ${person.person_id} = ${all_locations.person_id} ;;
   }
-  join: feat_fuzzy_data {
-    view_label: "Match Groups"
-    sql_on: ${person.person_id} = ${feat_fuzzy_data.person_id} ;;
-  }
+  # join: feat_fuzzy_data {
+  #   view_label: "Match Groups"
+  #   sql_on: ${person.person_id} = ${feat_fuzzy_data.person_id} ;;
+  # }
   aggregate_table: search {
     query: {
       dimensions: [person.person_id, person._search]
@@ -67,13 +67,13 @@ explore: application {
   }
 }
 
-explore: feat_fuzzy_data {
-  view_label: "Match Groups"
-  join: person {
-    sql_on: ${feat_fuzzy_data.person_id} = ${person.person_id} ;;
-    relationship: many_to_one
-  }
-}
+# explore: feat_fuzzy_data {
+#   view_label: "Match Groups"
+#   join: person {
+#     sql_on: ${feat_fuzzy_data.person_id} = ${person.person_id} ;;
+#     relationship: many_to_one
+#   }
+# }
 
 explore: match_groups {
   label: "AI Match Groups"
@@ -98,4 +98,63 @@ explore: account_events {
 
 named_value_format: big_money {
   value_format: "[>=1000000]$0.00,,\"M\";[>=1000]$0.00,\"K\";$0.00"
+}
+
+
+view: match_groups {
+  derived_table: {
+    sql:
+    SELECT rank() OVER (partition by match_feature order by match_value) as match_group, * FROM (
+      select  person_id, email_address as `match_value`, 'email_match' as `match_feature`  from vision.person where
+        email_address in (
+          select email_address from vision.person group by 1 having count(*) > 1
+        )
+      union all
+      select person_id, home_address,  'home_address_match' from vision.person where
+        home_address in (
+                select home_address  from vision.person group by 1 having count(*) > 1
+              )
+
+      union all
+      select person_id, mail_address,  'mail_address_match' from vision.person where
+        mail_address in (
+                select mail_address  from vision.person group by 1 having count(*) > 1
+              )
+)
+ ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [detail*]
+  }
+
+  dimension: match_group {
+    type: number
+    sql: ${TABLE}.match_group ;;
+  }
+
+  dimension: person_id {
+    type: number
+    sql: ${TABLE}.person_id ;;
+    link: {
+      label: "See Person"
+      url: "/dashboards-next/21?Person+ID={{ value }}"
+    }
+
+  }
+
+  dimension: match_value {
+    type: string
+    sql: ${TABLE}.match_value ;;
+  }
+
+  dimension: match_feature {
+    type: string
+    sql: ${TABLE}.match_feature ;;
+  }
+
+  set: detail {
+    fields: [match_group, person_id, match_value, match_feature]
+  }
 }
