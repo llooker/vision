@@ -104,6 +104,7 @@ named_value_format: big_money {
 view: match_groups {
   derived_table: {
     sql:
+    WITH grps as (
     SELECT rank() OVER (partition by match_feature order by match_value) as match_group, * FROM (
       select  person_id, email_address as `match_value`, 'email_match' as `match_feature`  from vision.person where
         email_address in (
@@ -120,8 +121,17 @@ view: match_groups {
         mail_address in (
                 select mail_address  from vision.person group by 1 having count(*) > 1
               )
+))
+SELECT * FROM grps where
+grps.match_group in (
+select g.match_group from grps g where {% condition person_filter %} g.person_id {% endcondition %}
 )
+
  ;;
+  }
+
+  filter: person_filter {
+    type: number
   }
 
   measure: count {
