@@ -46,7 +46,7 @@ explore: application {
       limit: 10000
     }
     materialization: {
-      sql_trigger_value: select current_date() ;;
+      sql_trigger_value: select 1 ;;
     }
   }
   query: distribution_of_amounts {
