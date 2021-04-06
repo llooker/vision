@@ -169,10 +169,15 @@ view: application {
     sql: ${previous_income} ;;
     value_format_name: usd_0
   }
+  measure: max_previous_income {
+    type: max
+    hidden: yes
+    sql: ${previous_income} ;;
+  }
 
   measure: payments_to_previous_income_ratio {
     type: number
-    sql: ${payments.average_distirbution_amount} / (${previous_annual_income}/12) ;;
+    sql: ${payments.average_distirbution_amount}*1.0 / ${max_previous_income} ;;
     value_format_name: percent_1
   }
 

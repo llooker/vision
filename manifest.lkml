@@ -40,7 +40,8 @@ application: ef_vision {
 
 
 visualization: {
-  id: "kewl"
-  url: "https://localhost:4443/forcedirected.js"
-  label: "Kewl"
+  id: "custom_force_directed"
+  # url: "https://localhost:4443/forcedirected.js"
+  file: "forcedirected.js"
+  label: "custom_force_directed"
 }
