@@ -45,3 +45,10 @@ visualization: {
   file: "forcedirected.js"
   label: "custom_force_directed"
 }
+
+visualization: {
+  id: "kewl"
+  url: "https://localhost:4443/kewl.js"
+  # file: "kewl.js"
+  label: "kewl"
+}
