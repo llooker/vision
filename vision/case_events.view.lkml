@@ -1,5 +1,12 @@
 view: case_events {
-  sql_table_name: `vision.case_events` ;;
+  sql_table_name:
+    (SELECT * FROM `vision.case_events`
+  WHERE opened_by in (
+            "AI", "ron@govportal.io","sal@govportal.io",
+            "anil@govportal.io","desmond@govportal.io","salma@govportal.io",
+            "tess@govportal.io","max@govportal.io","susan@govportal.io","{{ _user_attributes['email'] }}"
+            ))
+  ;;
 
   measure: count {
     type: count

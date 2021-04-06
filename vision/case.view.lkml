@@ -1,5 +1,12 @@
 view: case {
-  sql_table_name: `vision.case`
+  sql_table_name:
+
+  (SELECT * FROM `vision.case`
+  WHERE opened_by in (
+            "AI", "ron@govportal.io","sal@govportal.io",
+            "anil@govportal.io","desmond@govportal.io","salma@govportal.io",
+            "tess@govportal.io","max@govportal.io","susan@govportal.io","{{ _user_attributes['email'] }}"
+            ))
     ;;
 
   dimension: case_id {
