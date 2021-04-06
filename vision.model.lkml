@@ -149,10 +149,10 @@ select g.match_group from grps g where {% condition person_filter %} g.person_id
     sql: ${TABLE}.person_id ;;
     link: {
       label: "See Person"
-      url: "https://lookerdev.govportal.io/dashboards-next/21?Person+ID={{ value }}"
+      url: "/dashboards-next/21?Person+ID={{ value }}"
     }
     link: {
-      label: "See Cool Thing"
+      label: "See Driver's License"
       url: "/explore/vision/application?fields=documents.file_location&f[documents.file_type]=%22drivers_license%22&f[person.person_id]={{ value }}&sorts=documents.file_location&limit=500&column_limit=50&vis=%7B%22hidden_fields%22%3A%5B%5D%2C%22hidden_points_if_no%22%3A%5B%5D%2C%22series_labels%22%3A%7B%7D%2C%22show_view_names%22%3Atrue%2C%22series_types%22%3A%7B%7D%2C%22type%22%3A%22marketplace_viz_carousel%3A%3Acarousel-marketplace%22%2C%22defaults_version%22%3A0%7D&filter_config=%7B%22documents.file_type%22%3A%5B%7B%22type%22%3A%22%3D%22%2C%22values%22%3A%5B%7B%22constant%22%3A%22drivers_license%22%7D%2C%7B%7D%5D%2C%22id%22%3A0%2C%22error%22%3Afalse%7D%5D%2C%22person.person_id%22%3A%5B%7B%22type%22%3A%22%3D%22%2C%22values%22%3A%5B%7B%22constant%22%3A%22811%22%7D%2C%7B%7D%5D%2C%22id%22%3A1%2C%22error%22%3Afalse%7D%5D%7D&origin=share-expanded"
     }
   }
