@@ -149,7 +149,7 @@ select g.match_group from grps g where {% condition person_filter %} g.person_id
     sql: ${TABLE}.person_id ;;
     link: {
       label: "See Person"
-      url: "https://looker-dat-vision-staging-dot-pbl-demo-2020-281322.an.r.appspot.com/analytics/beneficiary?Person%20ID=324{{ value }}"
+      url: "https://looker-dat-vision-staging-dot-pbl-demo-2020-281322.an.r.appspot.com/analytics/beneficiary?Person%20ID={{ value }}"
     }
     link: {
       label: "See Cool Thing"
