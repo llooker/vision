@@ -149,7 +149,7 @@ select g.match_group from grps g where {% condition person_filter %} g.person_id
     sql: ${TABLE}.person_id ;;
     link: {
       label: "See Person"
-      url: "/dashboards-next/21?Person+ID={{ value }}"
+      url: "@{host}/embed/dashboards-next/21?Person+ID={{ value }}"
     }
     link: {
       label: "See Driver's License"
