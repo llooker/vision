@@ -65,6 +65,8 @@ explore: application {
     filters: [person.matching_zip: "no"]
     description: "See persons with non matching home and mailing zip codes"
   }
+
+  case_sensitive: no
 }
 
 # explore: feat_fuzzy_data {
