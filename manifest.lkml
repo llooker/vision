@@ -24,8 +24,8 @@ constant: host {
 
 application: ef_vision {
   label: "Vision Extension"
-  # url: "http://localhost:8080/bundle.js"
-  file: "bundle.js"
+  url: "http://localhost:8080/bundle.js"
+  # file: "bundle.js"
   entitlements: {
     local_storage: yes
     navigation: yes

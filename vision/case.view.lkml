@@ -71,9 +71,14 @@ view: case {
         name: "email"
       }
     }
+    # link: {
+    #   label: "View Application"
+    #   url: "@{host}/embed/dashboards-next/22?Application+ID={{ application_id._value }}&_theme=vision_theme&embed_domain=https://govportal.io&sdk=2"
+    # }
     link: {
-      label: "View Application"
-      url: "@{host}/embed/dashboards-next/22?Application+ID={{ application_id._value }}&_theme=vision_theme&embed_domain=https://govportal.io&sdk=2"
+      label: "View Beneficiary"
+      # url: "/dashboards-next/21?Person+ID={{ person_id._value }}"
+      url: "{{ person_id._value }}"
     }
   }
 
