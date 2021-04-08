@@ -44,9 +44,14 @@ select g.match_group from grps g where {% condition person_filter %} g.person_id
   dimension: person_id {
     type: number
     sql: ${TABLE}.person_id ;;
+    # link: {
+    #   label: "See Person"
+    #   url: "@{host}/embed/dashboards-next/21?Person+ID={{ value }}"
+    # }
     link: {
-      label: "See Person"
-      url: "@{host}/embed/dashboards-next/21?Person+ID={{ value }}"
+      label: "View Beneficiary"
+      # url: "/dashboards-next/21?Person+ID={{ person_id._value }}"
+      url: "{{ person_id._value }}"
     }
     link: {
       label: "See Driver's License"
