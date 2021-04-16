@@ -1,7 +1,7 @@
 # connection: "public-sector"
 connection: "public-sector-pbl-demo"
 include: "/*/*.view.lkml"
-persist_for: "0 minute"
+persist_for: "30 minute"
 
 
 explore: application {
