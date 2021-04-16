@@ -5,7 +5,7 @@ view: payments {
     ,person.name
     ,application.application_id
     ,date_date
-    ,distirbution_amount
+    ,amount
   ]
 
   dimension: payment_id {

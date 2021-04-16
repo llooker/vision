@@ -20,9 +20,6 @@ explore: application {
   join: payments {
     sql_on: ${person.person_id} = ${payments.person_id} ;;
   }
-  join: fips_scoring {
-    sql_on: ${application.application_id} = ${fips_scoring.application_id} ;;
-  }
   join: home_loc {
     from: zip_to_lat_lon
     view_label: "Person"
@@ -36,10 +33,6 @@ explore: application {
   join: all_locations {
     sql_on: ${person.person_id} = ${all_locations.person_id} ;;
   }
-  # join: feat_fuzzy_data {
-  #   view_label: "Match Groups"
-  #   sql_on: ${person.person_id} = ${feat_fuzzy_data.person_id} ;;
-  # }
   aggregate_table: search {
     query: {
       dimensions: [person.person_id, person._search]
@@ -49,33 +42,69 @@ explore: application {
       sql_trigger_value: select 1 ;;
     }
   }
-  query: distribution_of_amounts {
-    dimensions: [payments.amount_tier]
-    measures: [payments.count]
-    description: "See distribution of amounts"
+
+# open cases
+  query: open_cases {
+    dimensions: [case.case_id, case.flag, case.judgement, case.opened_date, person.name]
+    measures: [case.fips_score_]
+    filters: [
+      case.is_open: "Yes",
+      case.opened_date: "NOT NULL"
+    ]
+    description: "View the whole open case queue"
   }
-  query: prior_year_outstanding_cases_by_state{
-    dimensions: [person.home_state, person.count]
-    filters: [case.is_open: "Yes", case.opened_date: "before 2021-01-01"]
-    description: "See outstanding cases from last year that are still open"
+# Beneficiaries by open cases
+
+    query: beneficiaries_with_open_cases {
+      dimensions: [person.name, person.person_id]
+      measures: [case.fips_score_max, person.cases]
+      filters: [
+        case.flag: "-NULL,-EMPTY",
+        case.is_open: "Yes"
+      ]
+      description: "View Beneficiaries with open cases"
+    }
+
+# aging cases
+  query: aging_cases {
+      dimensions: [
+        case.case_id,
+        case.created_by,
+        case.flag,
+        case.opened_date,
+        case.status,
+        case.time_open,
+        person.first_name,
+        person.last_name
+      ]
+      measures: [case.fips_score_average]
+      filters: [
+        case.closed_date: "NULL",
+        case.time_open: ">90"
+      ]
+    description: "View cases open longer than 90 days"
+    }
+# out of state addresses
+  query: out_of_state_mail_address {
+    dimensions: [person.home_address_full, person.mail_address_full, person.name, person.person_id]
+    measures: [person.cases]
+    filters: [person.mail_state: "-CA"]
+    description: "Beneficiaries with mailing addresses outside of the state (and any cases)"
   }
-  query: out_of_zip{
-    dimensions: [person.name, person.ssn, person.phone_number, person.email_address, person.mail_zip, person.home_zip]
-    measures: [application.count]
-    filters: [person.matching_zip: "no"]
-    description: "See persons with non matching home and mailing zip codes"
+
+# marked suspicious IP
+  query: suspicious_ip_addresses {
+    dimensions: [ip_address, person.name, person.person_id]
+    measures: [person.cases]
+    filters: [application.ip_address: "10.%,1.%,192%"]
+    description: "Beneficiaries with suspicious IP addresses patterns (and any cases)"
   }
+
+
 
   case_sensitive: no
 }
 
-# explore: feat_fuzzy_data {
-#   view_label: "Match Groups"
-#   join: person {
-#     sql_on: ${feat_fuzzy_data.person_id} = ${person.person_id} ;;
-#     relationship: many_to_one
-#   }
-# }
 
 explore: match_groups {
   label: "AI Match Groups"

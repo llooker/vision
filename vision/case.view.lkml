@@ -197,6 +197,11 @@ view: case {
     label: "All Flags"
   }
 
+  dimension: judgement {
+    type: string
+    sql: ${TABLE}.judgement ;;
+  }
+
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;

@@ -6,6 +6,10 @@ view: person {
     sql: ${TABLE}.person_id ;;
     primary_key: yes
     value_format_name: id
+    link: {
+      label: "View Beneficiary"
+      url: "{{ person_id._value }}"
+    }
   }
 
   dimension_group: dob {
@@ -36,6 +40,17 @@ view: person {
     sql: ${TABLE}.gender ;;
   }
 
+  dimension: home_address_full {
+    type: string
+    sql: CONCAT(${home_address},'\n',${home_city},', ',${home_state},'\n',${home_zip}) ;;
+    html: <p>
+          {{home_address._value}}<br/>
+          {{home_city._value}}, {{home_state._value}}<br/>
+          {{home_zip._value}}
+          </p> ;;
+    group_label: "Home Address"
+  }
+
   dimension: home_address {
     type: string
     sql: ${TABLE}.home_address ;;
@@ -58,6 +73,17 @@ view: person {
     type: zipcode
     sql: ${TABLE}.home_zip ;;
     group_label: "Home Address"
+  }
+
+  dimension: mail_address_full {
+    type: string
+    sql: CONCAT(${mail_address},'\n',${mail_city},', ',${mail_state},'\n',${mail_zip}) ;;
+    html: <p>
+          {{mail_address._value}}<br/>
+          {{mail_city._value}}, {{mail_state._value}}<br/>
+          {{mail_zip._value}}
+          </p> ;;
+    group_label: "Mailing Address"
   }
 
   dimension: mail_address {
@@ -142,6 +168,11 @@ view: person {
     drill_fields: [detail*]
   }
 
+  measure: cases {
+    type: list
+    list_field: case.flag
+  }
+
   set: detail {
     fields: [
       person_id,
@@ -156,9 +187,7 @@ view: person {
       mail_city,
       mail_state,
       mail_zip,
-      language,
-      first_name,
-      last_name
+      language
     ]
   }
 }

@@ -41,6 +41,11 @@ view: case_events {
     sql: ${TABLE}.datetime ;;
   }
 
+  dimension: log {
+    hidden: yes
+    sql: concat(${datetime_time},' \n', ${notes}) ;;
+  }
+
   set: detail {
     fields: [case_event_id, case_id, type, notes, datetime_time]
   }
