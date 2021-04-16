@@ -1,7 +1,6 @@
-# connection: "public-sector"
 connection: "public-sector-pbl-demo"
 include: "/*/*.view.lkml"
-persist_for: "30 minute"
+persist_for: "48 hours"
 
 
 explore: application {
@@ -103,6 +102,12 @@ explore: application {
 
 
   case_sensitive: no
+}
+
+explore: application_no_cache {
+  view_name: application
+  extends: [application]
+  persist_for: "0 seconds"
 }
 
 
