@@ -113,6 +113,9 @@ explore: application_no_cache {
 
 explore: match_groups {
   label: "AI Match Groups"
+  join: documents {
+    sql_on: ${match_groups.person_id} = ${documents.person_id} ;;
+  }
 }
 
 explore: account_events {
