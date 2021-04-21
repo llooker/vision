@@ -286,13 +286,6 @@ view: case {
     drill_fields: [detail*]
   }
 
-
-  measure: fips_score_count {
-    type: count
-    sql: ${TABLE}.fips_score ;;
-    html: @{fips_html} ;;
-  }
-
   drill_fields: [detail*]
   set: detail {
     fields: [
