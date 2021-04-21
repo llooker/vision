@@ -208,7 +208,6 @@ view: case {
   }
 
   dimension: fips_score {
-    hidden: yes
     type: number
     sql: ${TABLE}.fips_score ;;
     html: @{fips_html} ;;
