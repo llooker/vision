@@ -289,7 +289,6 @@ view: case {
 
 
   measure: fips_score_count {
-    hidden: yes
     type: count
     sql: ${TABLE}.fips_score ;;
     html: @{fips_html} ;;
