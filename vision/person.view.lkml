@@ -140,9 +140,9 @@ view: person {
   }
 
   dimension: phone_number {
-    type: number
+    type: string
     group_label: "PII"
-    value_format: "(###) ###-####"
+    # value_format: "(###) ###-####"
   }
 
   dimension: name {

@@ -275,6 +275,18 @@ view: case {
     required_fields: [case_id]
   }
 
+  measure: total_fips_score_ {
+    label: "Total Fips Score"
+    group_label: "Fraud Score"
+    description: "Cumulative Fips Score"
+    type: sum
+    sql: ${fips_score} ;;
+    value_format_name: decimal_1
+    html: @{fips_html} ;;
+    required_fields: [person_id]
+  }
+
+
   measure: median_time_open {
     type: median
     sql: ${time_open} ;;
