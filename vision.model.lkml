@@ -2,6 +2,10 @@ connection: "public-sector-pbl-demo"
 include: "/*/*.view.lkml"
 persist_for: "48 hours"
 
+datagroup: vision {
+  sql_trigger: select 1 ;;
+  max_cache_age: "24 hours"
+}
 
 explore: application {
   join: person {
@@ -38,7 +42,7 @@ explore: application {
       limit: 10000
     }
     materialization: {
-      sql_trigger_value: select 1 ;;
+      datagroup_trigger: vision
     }
   }
 
